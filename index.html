@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>One Page Multi Login System</title>
+<title>Multi User Login System</title>
 
 <style>
     body { font-family: Arial; background:#f3f3f3; margin:0; padding:0; }
@@ -12,9 +12,9 @@
         padding:25px; border-radius:12px; box-shadow:0 0 10px #ccc;
     }
 
-    input { width:92%; padding:12px; margin:8px 0; font-size:16px; }
+    input { width:100%; padding:12px; margin:8px 0; font-size:16px; }
     button {
-        width:100%; padding:12px; margin-top:10px;
+        width:92%; padding:12px; margin-top:10px;
         background:#0284c7; border:none; border-radius:8px;
         color:white; font-size:18px; cursor:pointer;
     }
@@ -22,7 +22,6 @@
 
     .logout-btn { background:red !important; }
 
-    /* Premium lesson styling */
     .lesson-box {
         display:grid; grid-template-columns:repeat(3,1fr);
         gap:10px; margin-bottom:25px;
@@ -33,7 +32,6 @@
     }
     .lesson-box button:hover { background:#1e40af; }
 
-    /* Popup */
     #popup {
         display:none; position:fixed; top:0; left:0;
         width:100%; height:100%; background:rgba(0,0,0,0.7);
@@ -43,35 +41,26 @@
 </head>
 <body>
 
-<!-- ============================
-        LOGIN PAGE
-============================= -->
+<!-- LOGIN PAGE -->
 <div id="login-box" class="box">
     <h2 style="text-align:center;">Login</h2>
-    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="email" placeholder="Username or Email">
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
 </div>
 
-
-<!-- ============================
-        FREE PAGE
-============================= -->
+<!-- FREE PAGE -->
 <div id="free-page" class="box" style="display:none;">
     <h2>Free User Dashboard</h2>
     <p>You are logged in as a Free User.</p>
-
     <button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 
-
-<!-- ============================
-        PREMIUM PAGE (ONE PAGE)
-============================= -->
+<!-- PREMIUM PAGE -->
 <div id="premium-page" class="box" style="display:none;">
     <h2 style="text-align:center;">Reading & Newspaper Analysis</h2>
 
-    <!-- ========== PHASE 1 ========== -->
+    <!-- PHASE 1 -->
     <h3>📘 1st Phase</h3>
     <div class="lesson-box">
         <button onclick="openVideo('iotb892fI_E')">01</button>
@@ -86,7 +75,7 @@
         <button onclick="openVideo('Dhm0rt3ECng')">10</button>
     </div>
 
-    <!-- ========== PHASE 2 ========== -->
+    <!-- PHASE 2 -->
     <h3>📗 2nd Phase</h3>
     <div class="lesson-box">
         <button onclick="openVideo('tLj_Eh458So')">11</button>
@@ -101,7 +90,7 @@
         <button onclick="openVideo('1GqHIpf5F7c')">20</button>
     </div>
 
-    <!-- ========== PHASE 3 ========== -->
+    <!-- PHASE 3 -->
     <h3>📙 3rd Phase</h3>
     <div class="lesson-box">
         <button onclick="openVideo('QrZidTlFi_A')">21</button>
@@ -116,7 +105,7 @@
         <button onclick="openVideo('qQK4EG90_Q0')">30</button>
     </div>
 
-    <!-- ========== PHASE 4 ========== -->
+    <!-- PHASE 4 -->
     <h3>📕 4th Phase</h3>
     <div class="lesson-box">
         <button onclick="openVideo('vsAX9A2qG6U')">31</button>
@@ -134,53 +123,43 @@
     <button class="logout-btn" onclick="logout()">Logout</button>
 </div>
 
-
-
-<!-- ============================
-        VIDEO POPUP PLAYER
-============================= -->
+<!-- POPUP PLAYER -->
 <div id="popup">
     <div style="position:relative; width:90%; max-width:600px;">
         <iframe id="player" width="100%" height="320" style="border:0;"></iframe>
-
         <button onclick="closeVideo()" style="
             position:absolute; top:-15px; right:-15px;
             background:red; color:white; border:none;
             width:40px; height:40px; border-radius:50%;
-            font-size:20px; cursor:pointer;">
-            X
-        </button>
+            font-size:20px; cursor:pointer;">X</button>
     </div>
 </div>
 
-
-
-<!-- ============================
-        SCRIPT SECTION
-============================= -->
 <script>
-// Simple user database
+// MULTI USER LOGIN DATABASE
 const users = [
-    {email:"arafat", password:"12345", type:"premium"}
-    {email:"free@gmail.com", password:"12345", type:"free"},
-    {email:"premium@gmail.com", password:"12345", type:"premium"}
+    {username:"arafat", password:"12345", type:"premium"},
+    {username:"free", password:"12345", type:"free"},
+    {username:"premiumuser", password:"12345", type:"premium"},
+    {username:"student1", password:"0000", type:"free"},
+    {username:"student2", password:"9999", type:"premium"}
 ];
 
-// Auto login check
+// AUTO LOGIN
 window.onload = function(){
     let t = localStorage.getItem("userType");
     if(t==="free") showFree();
     if(t==="premium") showPremium();
 };
 
-// Login
+// LOGIN FUNCTION
 function login(){
     let email = document.getElementById("email").value;
     let pass  = document.getElementById("password").value;
 
-    let user = users.find(u => u.email===email && u.password===pass);
+    let user = users.find(u => u.username===email && u.password===pass);
 
-    if(!user){ alert("Wrong Email or Password!"); return; }
+    if(!user){ alert("Wrong Username or Password!"); return; }
 
     localStorage.setItem("userType", user.type);
 
@@ -188,28 +167,24 @@ function login(){
     else showPremium();
 }
 
-// FREE dashboard
+// PAGES
 function showFree(){
     hideAll();
     document.getElementById("free-page").style.display="block";
     history.replaceState({}, "", "/");
 }
-
-// PREMIUM dashboard
 function showPremium(){
     hideAll();
     document.getElementById("premium-page").style.display="block";
     history.replaceState({}, "", "/");
 }
-
-// Hide all pages
 function hideAll(){
     document.getElementById("login-box").style.display="none";
     document.getElementById("free-page").style.display="none";
     document.getElementById("premium-page").style.display="none";
 }
 
-// Logout
+// LOGOUT
 function logout(){
     localStorage.removeItem("userType");
     location.reload();
@@ -221,7 +196,6 @@ function openVideo(id){
     document.getElementById("player").src =
         "https://www.youtube.com/embed/" + id;
 }
-
 function closeVideo(){
     document.getElementById("player").src="";
     document.getElementById("popup").style.display="none";

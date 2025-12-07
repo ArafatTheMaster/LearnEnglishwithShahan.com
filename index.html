@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>One Page Multi Login System</title>
+
+<style>
+    body { font-family: Arial; background:#f3f3f3; margin:0; padding:0; }
+
+    .box {
+        max-width:430px; margin:50px auto; background:white;
+        padding:25px; border-radius:12px; box-shadow:0 0 10px #ccc;
+    }
+
+    input { width:100%; padding:12px; margin:8px 0; font-size:16px; }
+    button {
+        width:100%; padding:12px; margin-top:10px;
+        background:#0284c7; border:none; border-radius:8px;
+        color:white; font-size:18px; cursor:pointer;
+    }
+    button:hover { background:#0369a1; }
+
+    .logout-btn { background:red !important; }
+
+    /* Premium lesson styling */
+    .lesson-box {
+        display:grid; grid-template-columns:repeat(3,1fr);
+        gap:10px; margin-bottom:25px;
+    }
+    .lesson-box button {
+        padding:12px; background:#2563eb; color:white;
+        border:none; border-radius:8px; cursor:pointer;
+    }
+    .lesson-box button:hover { background:#1e40af; }
+
+    /* Popup */
+    #popup {
+        display:none; position:fixed; top:0; left:0;
+        width:100%; height:100%; background:rgba(0,0,0,0.7);
+        justify-content:center; align-items:center; z-index:9999;
+    }
+</style>
+</head>
+<body>
+
+<!-- ============================
+        LOGIN PAGE
+============================= -->
+<div id="login-box" class="box">
+    <h2 style="text-align:center;">Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+</div>
+
+
+<!-- ============================
+        FREE PAGE
+============================= -->
+<div id="free-page" class="box" style="display:none;">
+    <h2>Free User Dashboard</h2>
+    <p>You are logged in as a Free User.</p>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+
+<!-- ============================
+        PREMIUM PAGE (ONE PAGE)
+============================= -->
+<div id="premium-page" class="box" style="display:none;">
+    <h2 style="text-align:center;">Reading & Newspaper Analysis</h2>
+
+    <!-- ========== PHASE 1 ========== -->
+    <h3>📘 1st Phase</h3>
+    <div class="lesson-box">
+        <button onclick="openVideo('iotb892fI_E')">01</button>
+        <button onclick="openVideo('fbuuojGuSC8')">02</button>
+        <button onclick="openVideo('2d3hVo8ptOg')">03</button>
+        <button onclick="openVideo('TC5TGI2GcuM')">04</button>
+        <button onclick="openVideo('GhmQ87mibmU')">05</button>
+        <button onclick="openVideo('7qRvbfoteYY')">06</button>
+        <button onclick="openVideo('C_svQFyqr3U')">07</button>
+        <button onclick="openVideo('YYenfWmeRCE')">08</button>
+        <button onclick="openVideo('o_tmqaBS3tI')">09</button>
+        <button onclick="openVideo('Dhm0rt3ECng')">10</button>
+    </div>
+
+    <!-- ========== PHASE 2 ========== -->
+    <h3>📗 2nd Phase</h3>
+    <div class="lesson-box">
+        <button onclick="openVideo('tLj_Eh458So')">11</button>
+        <button onclick="openVideo('7MPCd2egXnk')">12</button>
+        <button onclick="openVideo('EZQBoGEKjS0')">13</button>
+        <button onclick="openVideo('Zih2CyLeAp4')">14</button>
+        <button onclick="openVideo('SXVN7yBh6MM')">15</button>
+        <button onclick="openVideo('jl2_Wqf6sHc')">16</button>
+        <button onclick="openVideo('zrKrAUvZn7g')">17</button>
+        <button onclick="openVideo('3o1Hj9VbnG4')">18</button>
+        <button onclick="openVideo('jzilheGRKBs')">19</button>
+        <button onclick="openVideo('1GqHIpf5F7c')">20</button>
+    </div>
+
+    <!-- ========== PHASE 3 ========== -->
+    <h3>📙 3rd Phase</h3>
+    <div class="lesson-box">
+        <button onclick="openVideo('QrZidTlFi_A')">21</button>
+        <button onclick="openVideo('3r2fMo8LQIw')">22</button>
+        <button onclick="openVideo('LJIit33Tpnk')">23</button>
+        <button onclick="openVideo('jHyzAiS7Jk0')">24</button>
+        <button onclick="openVideo('mz0T3G0C-jA')">25</button>
+        <button onclick="openVideo('RvLiZXr5aaU')">26</button>
+        <button onclick="openVideo('4cLn5vYZSh8')">27</button>
+        <button onclick="openVideo('K3m5--l3KPg')">28</button>
+        <button onclick="openVideo('kX84clLxODU')">29</button>
+        <button onclick="openVideo('qQK4EG90_Q0')">30</button>
+    </div>
+
+    <!-- ========== PHASE 4 ========== -->
+    <h3>📕 4th Phase</h3>
+    <div class="lesson-box">
+        <button onclick="openVideo('vsAX9A2qG6U')">31</button>
+        <button onclick="openVideo('u6umSukMXY4')">32</button>
+        <button onclick="openVideo('oP_zGUPznT4')">33</button>
+        <button onclick="openVideo('oHZlCUB-CfI')">34</button>
+        <button onclick="openVideo('6eq0KBZd3jk')">35</button>
+        <button onclick="openVideo('G8BJB615zlc')">36</button>
+        <button onclick="openVideo('Eucqqn3HuuY')">37</button>
+        <button onclick="openVideo('EPLI1Gr_lV4')">38</button>
+        <button onclick="openVideo('KFEWkqm1JgY')">39</button>
+        <button onclick="openVideo('r5vRn3qYQEE')">40</button>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+
+
+<!-- ============================
+        VIDEO POPUP PLAYER
+============================= -->
+<div id="popup">
+    <div style="position:relative; width:90%; max-width:600px;">
+        <iframe id="player" width="100%" height="320" style="border:0;"></iframe>
+
+        <button onclick="closeVideo()" style="
+            position:absolute; top:-15px; right:-15px;
+            background:red; color:white; border:none;
+            width:40px; height:40px; border-radius:50%;
+            font-size:20px; cursor:pointer;">
+            X
+        </button>
+    </div>
+</div>
+
+
+
+<!-- ============================
+        SCRIPT SECTION
+============================= -->
+<script>
+// Simple user database
+const users = [
+    {email:"free@gmail.com", password:"12345", type:"free"},
+    {email:"premium@gmail.com", password:"12345", type:"premium"}
+];
+
+// Auto login check
+window.onload = function(){
+    let t = localStorage.getItem("userType");
+    if(t==="free") showFree();
+    if(t==="premium") showPremium();
+};
+
+// Login
+function login(){
+    let email = document.getElementById("email").value;
+    let pass  = document.getElementById("password").value;
+
+    let user = users.find(u => u.email===email && u.password===pass);
+
+    if(!user){ alert("Wrong Email or Password!"); return; }
+
+    localStorage.setItem("userType", user.type);
+
+    if(user.type==="free") showFree();
+    else showPremium();
+}
+
+// FREE dashboard
+function showFree(){
+    hideAll();
+    document.getElementById("free-page").style.display="block";
+    history.replaceState({}, "", "/");
+}
+
+// PREMIUM dashboard
+function showPremium(){
+    hideAll();
+    document.getElementById("premium-page").style.display="block";
+    history.replaceState({}, "", "/");
+}
+
+// Hide all pages
+function hideAll(){
+    document.getElementById("login-box").style.display="none";
+    document.getElementById("free-page").style.display="none";
+    document.getElementById("premium-page").style.display="none";
+}
+
+// Logout
+function logout(){
+    localStorage.removeItem("userType");
+    location.reload();
+}
+
+// VIDEO POPUP
+function openVideo(id){
+    document.getElementById("popup").style.display="flex";
+    document.getElementById("player").src =
+        "https://www.youtube.com/embed/" + id;
+}
+
+function closeVideo(){
+    document.getElementById("player").src="";
+    document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>

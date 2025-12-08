@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reading & Newspaper Analysis</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#ef4444}
+    body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial; margin:0;background:linear-gradient(180deg,#071020 0%, #071827 100%);color:#e6eef8}
+    .container{max-width:980px;margin:24px auto;padding:16px}
+    h1{font-size:20px;margin:0 0 16px;text-align:center}
+    .phase{background:rgba(255,255,255,0.03);border-radius:12px;padding:12px;margin-bottom:12px}
+    .phase h2{font-size:15px;margin:0 0 8px;text-align:center}
+
+    /* lessons grid: responsive, two columns on small screens */
+    .lessons{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+    .lesson-btn{cursor:pointer;background:#072036;border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px;font-size:13px;color:#dff0ff;text-decoration:none;text-align:center}
+    .lesson-btn:hover{transform:translateY(-2px)}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(3,6,12,0.7);display:flex;align-items:center;justify-content:center;padding:20px;z-index:1000;opacity:0;pointer-events:none;transition:opacity .18s ease}
+    .modal-backdrop.show{opacity:1;pointer-events:auto}
+    .modal{width:min(1100px,100%);max-width:1100px;background:transparent;border-radius:10px;position:relative}
+    .video-wrap{position:relative;padding-top:56.25%;background:#000;border-radius:10px;overflow:hidden}
+    .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* red close button INSIDE video */
+    .close-btn{position:absolute;top:12px;right:12px;z-index:10;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
+    .close-btn:focus{outline:3px solid rgba(239,68,68,0.25)}
+
+    .meta{font-size:13px;color:#a8c6d9;margin-top:8px}
+    .hint{font-size:12px;color:#8aa7bf;margin-top:6px;text-align:center}
+
+    /* small screen tweaks */
+    @media (max-width:640px){
+      .container{margin:12px;padding:12px}
+      .lessons{grid-template-columns:repeat(2,1fr)}
+      .lesson-btn{padding:12px;font-size:14px}
+      .close-btn{width:40px;height:40px;top:8px;right:8px}
+      h1{font-size:18px}
+    }
+
+    /* larger screens: show more compact grid */
+    @media (min-width:1100px){
+      .lessons{grid-template-columns:repeat(5,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Reading & Newspaper Analysis Lessons — Click any lesson to open a popup player</h1>
+
+    <!-- Phase template -->
+    <section class="phase">
+      <h2>1st Phase</h2>
+      <div class="lessons">
+        <button class="lesson-btn" data-video="iotb892fI_E">Lesson 01</button>
+        <button class="lesson-btn" data-video="fbuuojGuSC8">Lesson 02</button>
+        <button class="lesson-btn" data-video="2d3hVo8ptOg">Lesson 03</button>
+        <button class="lesson-btn" data-video="TC5TGI2GcuM">Lesson 04</button>
+        <button class="lesson-btn" data-video="GhmQ87mibmU">Lesson 05</button>
+        <button class="lesson-btn" data-video="7qRvbfoteYY">Lesson 06</button>
+        <button class="lesson-btn" data-video="C_svQFyqr3U">Lesson 07</button>
+        <button class="lesson-btn" data-video="YYenfWmeRCE">Lesson 08</button>
+        <button class="lesson-btn" data-video="o_tmqaBS3tI">Lesson 09</button>
+        <button class="lesson-btn" data-video="Dhm0rt3ECng">Lesson 10</button>
+      </div>
+    </section>
+
+    <section class="phase">
+      <h2>2nd Phase</h2>
+      <div class="lessons">
+        <button class="lesson-btn" data-video="tLj_Eh458So">Lesson 11</button>
+        <button class="lesson-btn" data-video="7MPCd2egXnk">Lesson 12</button>
+        <button class="lesson-btn" data-video="EZQBoGEKjS0">Lesson 13</button>
+        <button class="lesson-btn" data-video="Zih2CyLeAp4">Lesson 14</button>
+        <button class="lesson-btn" data-video="SXVN7yBh6MM">Lesson 15</button>
+        <button class="lesson-btn" data-video="jl2_Wqf6sHc">Lesson 16</button>
+        <button class="lesson-btn" data-video="zrKrAUvZn7g">Lesson 17</button>
+        <button class="lesson-btn" data-video="3o1Hj9VbnG4">Lesson 18</button>
+        <button class="lesson-btn" data-video="jzilheGRKBs">Lesson 19</button>
+        <button class="lesson-btn" data-video="1GqHIpf5F7c">Lesson 20</button>
+      </div>
+    </section>
+
+    <section class="phase">
+      <h2>3rd Phase</h2>
+      <div class="lessons">
+        <button class="lesson-btn" data-video="QrZidTlFi_A">Lesson 21</button>
+        <button class="lesson-btn" data-video="3r2fMo8LQIw">Lesson 22</button>
+        <button class="lesson-btn" data-video="LJIit33Tpnk">Lesson 23</button>
+        <button class="lesson-btn" data-video="jHyzAiS7Jk0">Lesson 24</button>
+        <button class="lesson-btn" data-video="mz0T3G0C-jA">Lesson 25</button>
+        <button class="lesson-btn" data-video="RvLiZXr5aaU">Lesson 26</button>
+        <button class="lesson-btn" data-video="4cLn5vYZSh8">Lesson 27</button>
+        <button class="lesson-btn" data-video="K3m5--l3KPg">Lesson 28</button>
+        <button class="lesson-btn" data-video="kX84clLxODU">Lesson 29</button>
+        <button class="lesson-btn" data-video="qQK4EG90_Q0">Lesson 30</button>
+      </div>
+    </section>
+
+    <section class="phase">
+      <h2>4th Phase</h2>
+      <div class="lessons">
+        <button class="lesson-btn" data-video="vsAX9A2qG6U">Lesson 31</button>
+        <button class="lesson-btn" data-video="u6umSukMXY4">Lesson 32</button>
+        <button class="lesson-btn" data-video="oP_zGUPznT4">Lesson 33</button>
+        <button class="lesson-btn" data-video="oHZlCUB-CfI">Lesson 34</button>
+        <button class="lesson-btn" data-video="6eq0KBZd3jk">Lesson 35</button>
+        <button class="lesson-btn" data-video="G8BJB615zlc">Lesson 36</button>
+        <button class="lesson-btn" data-video="Eucqqn3HuuY">Lesson 37</button>
+        <button class="lesson-btn" data-video="EPLI1Gr_lV4">Lesson 38</button>
+        <button class="lesson-btn" data-video="KFEWkqm1JgY">Lesson 39</button>
+        <button class="lesson-btn" data-video="r5vRn3qYQEE">Lesson 40</button>
+      </div>
+    </section>
+
+    <p class="hint">Tip: You can also press <strong>Esc</strong> to close the popup.</p>
+  </div>
+
+  <!-- Modal (initially hidden) -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="video-wrap" id="videoWrap">
+        <!-- close button inside the video (red) -->
+        <button id="closeBtn" class="close-btn" aria-label="Close video">✕</button>
+        <!-- iframe inserted dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const modal = document.getElementById('modal');
+      const videoWrap = document.getElementById('videoWrap');
+      const closeBtn = document.getElementById('closeBtn');
+
+      function buildEmbed(id){
+        // autoplay=1, modestbranding=1, rel=0 to reduce distractions
+        return `\n          <iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n        `;
+      }
+
+      function openModal(videoId){
+        // inject iframe
+        videoWrap.insertAdjacentHTML('beforeend', buildEmbed(videoId));
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden','false');
+        // trap focus on close button
+        closeBtn.focus();
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(){
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden','true');
+        // remove iframe to stop playback
+        const iframe = videoWrap.querySelector('iframe');
+        if(iframe) iframe.remove();
+        document.body.style.overflow = '';
+      }
+
+      // attach listeners to lesson buttons
+      document.querySelectorAll('.lesson-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const id = btn.getAttribute('data-video');
+          if(!id) return;
+          openModal(id);
+        });
+      });
+
+      // close button inside video
+      closeBtn.addEventListener('click', closeModal);
+
+      // close on backdrop click (but not when clicking the video area)
+      modal.addEventListener('click', e => {
+        if(e.target === modal) closeModal();
+      });
+
+      // keyboard: Esc to close
+      document.addEventListener('keydown', e => {
+        if(e.key === 'Escape' && modal.classList.contains('show')){
+          closeModal();
+        }
+      });
+
+      // accessibility: prevent focus leaving modal while open (simple trap)
+      document.addEventListener('focus', function(event){
+        if(modal.classList.contains('show') && !modal.contains(event.target)){
+          event.stopPropagation();
+          closeBtn.focus();
+        }
+      }, true);
+
+    })();
+  </script>
+</body>
+</html>
